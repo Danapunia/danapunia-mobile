@@ -5,17 +5,32 @@ class HomePageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(HomePageController());
-
-    return Scaffold(
-      appBar: AppBar(),
-      body: Column(
-        children: const [
-          Center(
-            child: Text('HOMEPAGE'),
-          )
-        ],
-      ),
+    return GetBuilder<HomePageController>(
+      init: HomePageController(),
+      builder: (_) => !_.isLoading
+          ? Scaffold(
+              body: Column(
+                children: [
+                  const HomePageAppBar(),
+                  // HomePagePuniaSearch(),
+                  const HomePagePuniaFilter(),
+                  Expanded(
+                    child: SmartRefresher(
+                      enablePullDown: true,
+                      enablePullUp: true,
+                      onRefresh: _.fetchApi,
+                      onLoading: _.loadNextData,
+                      header: const MaterialClassicHeader(),
+                      controller: _.refreshController,
+                      child: const SingleChildScrollView(
+                        child: HomePagePuniaList(),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            )
+          : const HomePageShimmerEffect(),
     );
   }
 }

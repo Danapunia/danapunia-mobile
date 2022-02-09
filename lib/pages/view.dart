@@ -1,6 +1,7 @@
 import 'package:danapunia_mobile/pages/controller.dart';
+import 'package:danapunia_mobile/pages/home_page/components/_component.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:get/get.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 part 'home_page/home_page_view.dart';
