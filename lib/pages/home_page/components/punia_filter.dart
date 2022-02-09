@@ -5,7 +5,7 @@ class HomePagePuniaFilter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<HomePageController>();
+    final ctrl = Get.find<HomePageController>();
 
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
@@ -15,16 +15,16 @@ class HomePagePuniaFilter extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: List.generate(
-              controller.puniaCategory.getLength,
+              ctrl.puniaCategory.getLength,
               (index) => Container(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: GetBuilder<PuniaFilterController>(
                   builder: (_) => ChoiceChip(
                     onSelected: (x) => _.categoryOnSelected(index),
                     label: Text(
-                      controller.puniaCategory.getDataByIndex(index).name,
+                      ctrl.puniaCategory.getDataByIndex(index).name,
                     ),
-                    selected: controller.puniaCategory.getDataByIndex(index).selected,
+                    selected: ctrl.puniaCategory.getDataByIndex(index).selected,
                   ),
                 ),
               ),

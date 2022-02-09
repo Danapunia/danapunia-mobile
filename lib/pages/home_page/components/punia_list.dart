@@ -5,28 +5,15 @@ class HomePagePuniaList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<HomePageController>();
-
-    return GetBuilder<PuniaFilterController>(
+    return GetX<PuniaProgramController>(
+      init: PuniaProgramController(),
       builder: (_) => ListView.builder(
         shrinkWrap: true,
         controller: ScrollController(),
-        itemCount: _.getData.length,
-        itemBuilder: (ctx, i) => _card(_.getData[i]),
-        // itemCount: _.data.length,
-        // itemBuilder: (ctx,i)=>_card(_.data[i]),
+        itemCount: _.data.value?.data.length,
+        itemBuilder: (ctx, i) => _card(_.data.value!.data[i]),
       ),
     );
-    // return Obx(
-    //   () => ListView.builder(
-    //     shrinkWrap: true,
-    //     controller: ScrollController(),
-    //     // itemCount: _.getData.length,
-    //     // itemBuilder: (ctx, i) => _card(_.getData[i]),
-    //     itemCount: controller.puniaFilter.data.length,
-    //     itemBuilder: (ctx, i) => _card(_.data.value[i]),
-    //   ),
-    // );
   }
 
   Widget _card(PuniaProgram data) {

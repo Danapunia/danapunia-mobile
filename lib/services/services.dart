@@ -24,7 +24,7 @@ class Services {
     int page = 1,
   }) async {
     final url = Uri.parse(
-      '$baseURL/punia-programs?populate[punia_categories][fields][1]=id&pagination[pageSize]=14&pagination[page]=$page&$bodyParam',
+      '$baseURL/punia-programs?populate[punia_categories][fields][1]=id&pagination[pageSize]=10&pagination[page]=$page&$bodyParam',
     );
 
     final response = await http.get(url, headers: {
@@ -39,34 +39,4 @@ class Services {
     }
     return null;
   }
-
-// static Future<PuniaProgram?> getPuniaProgram() async {
-//   final url = Uri.parse('$baseURL/punia-programs');
-//
-//   final response = await http.get(url, headers: {
-//     'Content-Type': 'application/json',
-//     'Accept': 'application/json',
-//     'Authorization': 'Bearer $token',
-//   });
-//
-//   if (response.statusCode == 200) {
-//     return puniaProgramFromJson(response.body);
-//   }
-//   return null;
-// }
-//
-// static Future<List<PuniaCategory>?> getPuniaCategory() async {
-//   final url = Uri.parse('$baseURL/punia-categories');
-//
-//   final response = await http.get(url, headers: {
-//     'Content-Type': 'application/json',
-//     'Accept': 'application/json',
-//     'Authorization': 'Bearer $token',
-//   });
-//
-//   if (response.statusCode == 200) {
-//     return puniaCategoriesFromJson(response.body);
-//   }
-//   return null;
-// }
 }

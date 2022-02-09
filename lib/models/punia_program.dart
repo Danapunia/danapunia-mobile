@@ -5,7 +5,7 @@ PuniaProgramData puniaProgramDataFromJson(String str) {
 }
 
 class PuniaProgramData {
-  List<PuniaProgram> data;
+  var data = RxList<PuniaProgram>();
   Pagination pagination;
 
   PuniaProgramData({
@@ -15,7 +15,7 @@ class PuniaProgramData {
 
   factory PuniaProgramData.fromJson(Map<String, dynamic> json) {
     return PuniaProgramData(
-      data: List<PuniaProgram>.from(json['data'].map(
+      data: RxList<PuniaProgram>.from(json['data'].map(
         (x) => PuniaProgram.fromJson(x),
       )),
       pagination: Pagination.fromJson(json['meta']['pagination']),

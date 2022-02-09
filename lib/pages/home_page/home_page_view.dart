@@ -7,21 +7,15 @@ class HomePageView extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<HomePageController>(
       init: HomePageController(),
-      builder: (_) => !_.isLoading
+      builder: (_) => !_.isLoadingInit
           ? Scaffold(
               body: Column(
                 children: [
                   const HomePageAppBar(),
-                  // HomePagePuniaSearch(),
                   const HomePagePuniaFilter(),
                   Expanded(
-                    child: SmartRefresher(
-                      enablePullDown: true,
-                      enablePullUp: true,
-                      onRefresh: _.fetchApi,
-                      onLoading: _.loadNextData,
-                      header: const MaterialClassicHeader(),
-                      controller: _.refreshController,
+                    child: _smartRefresher(
+                      controller: _,
                       child: const SingleChildScrollView(
                         child: HomePagePuniaList(),
                       ),
@@ -31,6 +25,26 @@ class HomePageView extends StatelessWidget {
               ),
             )
           : const HomePageShimmerEffect(),
+    );
+  }
+
+  SmartRefresher _smartRefresher({
+    required HomePageController controller,
+    required Widget child,
+  }) {
+    return SmartRefresher(
+      enablePullDown: true,
+      enablePullUp: true,
+      onRefresh: controller.refreshData,
+      onLoading: controller.loadNextData,
+      header: const MaterialClassicHeader(),
+      footer: CustomFooter(
+        builder: (ctx, mode) => mode == LoadStatus.loading
+            ? const Center(child: CircularProgressIndicator())
+            : const SizedBox(),
+      ),
+      controller: controller.refreshController,
+      child: child,
     );
   }
 }

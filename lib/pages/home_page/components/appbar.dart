@@ -5,7 +5,7 @@ class HomePageAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<PuniaProgramController>();
+    final ctrl = Get.find<HomePageController>();
 
     return SafeArea(
       child: Container(
@@ -15,14 +15,7 @@ class HomePageAppBar extends StatelessWidget {
           children: [
             const Text('DANAPUNIA'),
             IconButton(
-              onPressed: () => showSearch(
-                context: context,
-                delegate: SearchPage<PuniaProgram>(
-                  items: controller.data.value!.data,
-                  builder: (t) => Text(t.name!),
-                  filter: (t) => [t.name],
-                ),
-              ),
+              onPressed: ctrl.searchOnClick,
               icon: const Icon(
                 Icons.search_rounded,
               ),
