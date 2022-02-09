@@ -39,6 +39,8 @@ dependencies:
   chips_choice: ^2.0.1
   search_page: ^2.0.0+1
   pull_to_refresh: ^2.0.0
+  scroll_to_index: ^2.1.1
+  readmore: ^2.1.0
 
 dev_dependencies:
   flutter_test:

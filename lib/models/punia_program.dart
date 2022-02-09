@@ -4,6 +4,12 @@ PuniaProgramData puniaProgramDataFromJson(String str) {
   return PuniaProgramData.fromJson(json.decode(str));
 }
 
+List<PuniaProgram> puniaProgramFromJson(String str) {
+  return List<PuniaProgram>.from(
+    json.decode(str)['data'].map((x) => PuniaProgram.fromJson(x)),
+  );
+}
+
 class PuniaProgramData {
   var data = RxList<PuniaProgram>();
   Pagination pagination;

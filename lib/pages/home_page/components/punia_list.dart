@@ -5,26 +5,18 @@ class HomePagePuniaList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ctrl = Get.find<HomePageController>();
+
     return GetX<PuniaProgramController>(
       init: PuniaProgramController(),
       builder: (_) => ListView.builder(
+        padding: const EdgeInsets.symmetric(vertical: 0),
         shrinkWrap: true,
         controller: ScrollController(),
         itemCount: _.data.value?.data.length,
-        itemBuilder: (ctx, i) => _card(_.data.value!.data[i]),
-      ),
-    );
-  }
-
-  Widget _card(PuniaProgram data) {
-    return InkWell(
-      onTap: () {},
-      child: Container(
-        padding: const EdgeInsets.all(24),
-        child: Row(
-          children: [
-            Text(data.name!),
-          ],
+        itemBuilder: (ctx, i) => PuniaCardWidget(
+          data: _.data.value!.data[i],
+          onTap: () => ctrl.cardOnClick(_.data.value!.data[i]),
         ),
       ),
     );

@@ -10,6 +10,7 @@ class HomePageController extends GetxController {
   final puniaCategory = Get.put(PuniaCategoryController());
   final puniaProgram = Get.put(PuniaProgramController());
   final puniaFilter = Get.put(PuniaFilterController());
+  final puniaSearch = Get.put(PuniaSearchController());
 
   @override
   void onInit() {
@@ -19,6 +20,11 @@ class HomePageController extends GetxController {
     ever(puniaProgram.data, (_) => checkData);
 
     ever(puniaFilter.selectedCategory, (_) => selectedCategoryChanged);
+  }
+
+  void cardOnClick(PuniaProgram data) {
+    final detailPage = Get.put(DetailPageController());
+    detailPage.goToPage(data);
   }
 
   void get selectedCategoryChanged async {
@@ -41,9 +47,13 @@ class HomePageController extends GetxController {
     showSearch(
       context: Get.context!,
       delegate: SearchPage<PuniaProgram>(
-        items: puniaProgram.data.value!.data,
-        builder: (t) => Text(t.name!),
+        items: puniaSearch.data,
+        builder: (t) => PuniaCardWidget(
+          data: t,
+          onTap: () => cardOnClick(t),
+        ),
         filter: (t) => [t.name],
+        onQueryUpdate: (keyword) => puniaSearch.searchPunia(keyword),
       ),
     );
   }

@@ -9,11 +9,15 @@ class HomePageAppBar extends StatelessWidget {
 
     return SafeArea(
       child: Container(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text('DANAPUNIA'),
+            const Text('DANAPUNIA',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                )),
             IconButton(
               onPressed: ctrl.searchOnClick,
               icon: const Icon(

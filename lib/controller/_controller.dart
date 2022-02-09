@@ -7,3 +7,5 @@ part 'punia_program_controller.dart';
 part 'punia_category_controller.dart';
 
 part 'punia_filter_controller.dart';
+
+part 'punia_search_controller.dart';

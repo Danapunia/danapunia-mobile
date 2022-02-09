@@ -39,4 +39,22 @@ class Services {
     }
     return null;
   }
+
+  static Future<List<PuniaProgram>> searchPuniaProgram(String keyword) async {
+    final url = Uri.parse(
+      '$baseURL/punia-programs?populate[punia_categories][fields][1]=id&pagination[pageSize]=10&pagination[page]=1&filters[name][\$containsi]=$keyword',
+    );
+
+    final response = await http.get(url, headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer $token',
+    });
+
+    if (response.statusCode == 200) {
+      print(response.body);
+      return puniaProgramFromJson(response.body);
+    }
+    return [];
+  }
 }
