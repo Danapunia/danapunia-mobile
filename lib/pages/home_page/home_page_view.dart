@@ -14,12 +14,14 @@ class HomePageView extends StatelessWidget {
                   const HomePageAppBar(),
                   const HomePagePuniaFilter(),
                   Expanded(
-                    child: _smartRefresher(
-                      controller: _,
-                      child: const SingleChildScrollView(
-                        child: HomePagePuniaList(),
-                      ),
-                    ),
+                    child: !_.isLoading
+                        ? _smartRefresher(
+                            ctrl: _,
+                            child: const SingleChildScrollView(
+                              child: HomePagePuniaList(),
+                            ),
+                          )
+                        : const Center(child: CircularProgressIndicator()),
                   ),
                 ],
               ),
@@ -29,21 +31,21 @@ class HomePageView extends StatelessWidget {
   }
 
   SmartRefresher _smartRefresher({
-    required HomePageController controller,
+    required HomePageController ctrl,
     required Widget child,
   }) {
     return SmartRefresher(
       enablePullDown: true,
       enablePullUp: true,
-      onRefresh: controller.refreshData,
-      onLoading: controller.loadNextData,
+      onRefresh: ctrl.refreshData,
+      onLoading: ctrl.loadNextData,
       header: const MaterialClassicHeader(),
       footer: CustomFooter(
         builder: (ctx, mode) => mode == LoadStatus.loading
             ? const Center(child: CircularProgressIndicator())
             : const SizedBox(),
       ),
-      controller: controller.refreshController,
+      controller: ctrl.refreshController,
       child: child,
     );
   }

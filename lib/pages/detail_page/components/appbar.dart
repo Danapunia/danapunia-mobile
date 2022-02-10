@@ -11,19 +11,19 @@ class DetailPageAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final statusBarHeight = AppBar().preferredSize.height;
-    final controller = Get.find<DetailPageController>();
+    final ctrl = Get.find<DetailPageController>();
 
     return SliverAppBar(
       title: innerBoxIsScrolled
           ? Text(
-              controller.data!.name!,
+              ctrl.punia!.name!,
               style: TextStyle(
                 color: innerBoxIsScrolled ? Colors.black : Colors.white,
               ),
             )
           : null,
       leading: IconButton(
-        padding: EdgeInsets.all(0),
+        padding: const EdgeInsets.all(0),
         splashRadius: 20,
         icon: Icon(
           Icons.arrow_back_outlined,
@@ -37,10 +37,11 @@ class DetailPageAppBar extends StatelessWidget {
         background: Stack(
           fit: StackFit.expand,
           children: [
-            Image.network(
-              'https://picsum.photos/250?image=9',
-              fit: BoxFit.cover,
-            ),
+            if (ctrl.punia!.imageURL != null)
+              Image.network(
+                '$imageURL${ctrl.punia!.imageURL}',
+                fit: BoxFit.cover,
+              ),
             Container(
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
@@ -53,7 +54,7 @@ class DetailPageAppBar extends StatelessWidget {
           ],
         ),
       ),
-      expandedHeight: MediaQuery.of(context).size.width - statusBarHeight,
+      expandedHeight: Get.width - statusBarHeight,
     );
   }
 }

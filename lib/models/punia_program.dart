@@ -32,7 +32,9 @@ class PuniaProgramData {
 class PuniaProgram {
   int? id;
   List<int>? puniaCategoryId;
+  int? organizationId;
   String? name;
+  String? imageURL;
   String? location;
   int? collectedFund;
   int? targetFund;
@@ -42,7 +44,9 @@ class PuniaProgram {
   PuniaProgram({
     required this.id,
     required this.puniaCategoryId,
+    required this.organizationId,
     required this.name,
+    required this.imageURL,
     required this.location,
     required this.collectedFund,
     required this.targetFund,
@@ -54,6 +58,9 @@ class PuniaProgram {
     return PuniaProgram(
       id: json['id'],
       name: json['attributes']['name'],
+      imageURL: json["attributes"]["image"]["data"] != null
+          ? json["attributes"]["image"]["data"]["attributes"]["url"]
+          : null,
       location: json['attributes']['location'],
       collectedFund: json['attributes']['collectedFund'],
       targetFund: json['attributes']['targetFund'],
@@ -68,6 +75,9 @@ class PuniaProgram {
           return x['id'];
         }),
       ),
+      organizationId: json['attributes']['organisase']['data'] != null
+          ? json['attributes']['organisase']['data']['id']
+          : null,
     );
   }
 }

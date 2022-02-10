@@ -7,6 +7,10 @@ part 'punia_program.dart';
 
 part 'punia_category.dart';
 
-part 'home_page.dart';
-
 part 'pagination.dart';
+
+part 'organization.dart';
+
+part 'punia_register.dart';
+
+part 'bank.dart';

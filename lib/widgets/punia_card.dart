@@ -20,14 +20,18 @@ class PuniaCardWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Expanded(
-              flex: 1,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Image.network(
-                  'https://picsum.photos/250?image=9',
-                ),
-              ),
+            SizedBox(
+              width: Get.width * 0.2,
+              height: Get.width * 0.2,
+              child: data.imageURL != null
+                  ? ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.network(
+                        '$imageURL${data.imageURL}',
+                        fit: BoxFit.cover,
+                      ),
+                    )
+                  : const SizedBox(),
             ),
             const SizedBox(width: 16),
             Expanded(

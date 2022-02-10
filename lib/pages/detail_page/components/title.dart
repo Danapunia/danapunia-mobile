@@ -10,7 +10,7 @@ class DetailPageTitle extends StatelessWidget {
         color: Colors.white,
         padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
         child: Text(
-          _.data!.name!,
+          _.punia!.name!,
           style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
         ),
       ),

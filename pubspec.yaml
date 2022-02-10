@@ -41,6 +41,8 @@ dependencies:
   pull_to_refresh: ^2.0.0
   scroll_to_index: ^2.1.1
   readmore: ^2.1.0
+  youtube_player_flutter: ^8.0.0
+  font_awesome_flutter: ^9.2.0
 
 dev_dependencies:
   flutter_test:

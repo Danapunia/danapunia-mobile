@@ -6,9 +6,9 @@ class DetailPageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(),
+      resizeToAvoidBottomInset: false,
       body: GetBuilder<DetailPageController>(
-        dispose: (_) => _.controller?.data = null,
+        dispose: (_) => _.controller?.punia = null,
         builder: (_) => !_.isLoading
             ? NestedScrollView(
                 headerSliverBuilder: (context, innerBoxIsScrolled) => [
@@ -20,19 +20,25 @@ class DetailPageView extends StatelessWidget {
                 body: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: const [
-                      DetailPageTitle(),
-                      DetailPageQuantity(),
-                      DetailPageDescription(),
-                      SizedBox(height: 16),
-                      DetailPageProposal(),
-                      SizedBox(height: 16),
+                    children: [
+                      const DetailPageTitle(),
+                      const DetailPageQuantity(),
+                      const DetailPageDescription(),
+                      const SizedBox(height: 16),
+                      const DetailPageProposal(),
+                      const SizedBox(height: 16),
+                      const DetailPageProgres(),
+                      const SizedBox(height: 16),
+                      if (_.punia!.organizationId != null)
+                        const DetailPageOrganization(),
+                      const SizedBox(height: 500),
                     ],
                   ),
                 ),
               )
             : const Center(child: CircularProgressIndicator()),
       ),
+      bottomNavigationBar: const DetailPageFAB(),
     );
   }
 }

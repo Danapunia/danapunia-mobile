@@ -15,7 +15,7 @@ class DetailPageQuantity extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  Text(_.data!.collectedFund.toString()),
+                  Text(_.punia!.collectedFund.toString()),
                   const Text('Terkumpul'),
                 ],
               ),
@@ -25,7 +25,7 @@ class DetailPageQuantity extends StatelessWidget {
               ),
               Column(
                 children: [
-                  Text(_.data!.targetFund.toString()),
+                  Text(_.punia!.targetFund.toString()),
                   const Text('Target Punia'),
                 ],
               ),
@@ -35,7 +35,7 @@ class DetailPageQuantity extends StatelessWidget {
               ),
               Column(
                 children: [
-                  Text('${_.data!.deadline?.day} Hari Lagi'),
+                  Text('${_.punia!.deadline?.day} Hari Lagi'),
                   const Text('Tenggat'),
                 ],
               ),
