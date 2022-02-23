@@ -13,7 +13,7 @@ class DetailPageOrganization extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            ctrl.organization!.namaOrganisasi,
+            ctrl.organization!.namaOrganisasi!,
             style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,

@@ -14,3 +14,5 @@ part 'organization.dart';
 part 'punia_register.dart';
 
 part 'bank.dart';
+
+part 'punia_amount.dart';

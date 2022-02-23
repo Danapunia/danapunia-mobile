@@ -5,10 +5,10 @@ Organization organizationFromJson(String str) {
 }
 
 class Organization {
-  int id;
-  String kodeOrganisasi;
-  String namaOrganisasi;
-  String tipeOrganisasi;
+  int? id;
+  String? kodeOrganisasi;
+  String? namaOrganisasi;
+  String? tipeOrganisasi;
 
   Organization({
     required this.id,

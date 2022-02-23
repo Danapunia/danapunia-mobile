@@ -14,22 +14,19 @@ class DetailPageAppBar extends StatelessWidget {
     final ctrl = Get.find<DetailPageController>();
 
     return SliverAppBar(
-      title: innerBoxIsScrolled
-          ? Text(
-              ctrl.punia!.name!,
-              style: TextStyle(
-                color: innerBoxIsScrolled ? Colors.black : Colors.white,
-              ),
-            )
-          : null,
+      stretch: true,
+      onStretchTrigger: () async {
+        print('ONSTRETCH');
+      },
+      title: innerBoxIsScrolled ? Text(ctrl.punia!.name!) : null,
       leading: IconButton(
         padding: const EdgeInsets.all(0),
         splashRadius: 20,
-        icon: Icon(
+        icon: const Icon(
           Icons.arrow_back_outlined,
-          color: innerBoxIsScrolled ? Colors.black : Colors.white,
+          // color: innerBoxIsScrolled ? Colors.black : Colors.white,
         ),
-        onPressed: Get.back,
+        onPressed: ctrl.back,
       ),
       floating: true,
       pinned: true,

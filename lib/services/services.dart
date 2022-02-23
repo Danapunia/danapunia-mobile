@@ -21,7 +21,7 @@ class Services {
     int page = 1,
   }) async {
     final url = Uri.parse(
-      '$apiURL/punia-programs?populate[punia_categories][fields][0]=id&populate[image][fields][1]=url&populate[organisase][fields][2]=id&pagination[pageSize]=10&pagination[page]=$page&$bodyParam',
+      '$apiURL/punia-programs?populate[punia_categories][fields][0]=id&populate[image][fields][1]=url&populate[organisase][fields][2]=id&populate[organisase][fields][3]=NamaOrganisasi&pagination[pageSize]=10&pagination[page]=$page&$bodyParam',
     );
 
     // print('URL $url');
@@ -38,13 +38,16 @@ class Services {
 
   static Future<List<PuniaProgram>> searchPuniaProgram(String keyword) async {
     final url = Uri.parse(
-      '$apiURL/punia-programs?populate[punia_categories][fields][0]=id&populate[image][fields][1]=url&pagination[pageSize]=10&pagination[page]=1&filters[name][\$containsi]=$keyword',
+      '$apiURL/punia-programs?populate[punia_categories][fields][0]=id&populate[image][fields][1]=url&populate[organisase][fields][2]=id&populate[organisase][fields][3]=NamaOrganisasi&pagination[pageSize]=10&pagination[page]=1&filters[name][\$containsi]=$keyword',
     );
 
     final response = await http.get(url, headers: _getHeaders);
 
     if (response.statusCode == 200) {
       print(response.body);
+      print(
+          'static Future<List<PuniaProgram>> searchPuniaProgram(String keyword) async {');
+      debugPrint(response.body);
       return puniaProgramFromJson(response.body);
     }
     return [];
@@ -62,6 +65,21 @@ class Services {
       return organizationFromJson(response.body);
     }
     return null;
+  }
+
+  static Future<List<Bank>> getBankByOrganization(int id) async {
+    final url = Uri.parse(
+      '$apiURL/bank-accounts?filters[organisasi][id][\$eq]=$id',
+    );
+
+    final response = await http.get(url, headers: _getHeaders);
+
+    if (response.statusCode == 200) {
+      print('static Future<List<Bank>> getBankByOrganization(int id) async {');
+      print(response.body);
+      return bankFromJson(response.body);
+    }
+    return [];
   }
 
   static get _getHeaders => {

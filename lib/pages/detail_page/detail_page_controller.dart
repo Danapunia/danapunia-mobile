@@ -5,6 +5,26 @@ class DetailPageController extends GetxController {
   Organization? organization;
   bool isLoading = true;
 
+  List<String> youtubeVideoId = [
+    '1qmhFvnqNaU',
+    'GgDLuuiKVPs',
+    '_OW30kEHcZo',
+  ];
+
+  Future<bool> back() async {
+    Get.back();
+    dispose();
+
+    return false;
+  }
+
+  @override
+  void dispose() {
+    Get.delete<RegisterPopupController>();
+    Get.delete<DetailPageController>();
+    super.dispose();
+  }
+
   void goToPage(PuniaProgram data) async {
     isLoading = true;
 
@@ -23,24 +43,8 @@ class DetailPageController extends GetxController {
   }
 
   void fabOnCLick() {
-    final puniaRegister = Get.put(PuniaRegisterController());
-    puniaRegister.punia = punia;
-    puniaRegister.organization = organization;
-    puniaRegister.showDialog;
-  }
+    final popup = Get.put(RegisterPopupController());
 
-  YoutubePlayerController get getYoutubePlayerController {
-    return YoutubePlayerController(
-      initialVideoId: '1qmhFvnqNaU',
-      flags: const YoutubePlayerFlags(
-        mute: false,
-        autoPlay: false,
-        disableDragSeek: false,
-        loop: false,
-        isLive: false,
-        forceHD: false,
-        enableCaption: true,
-      ),
-    );
+    popup.openPopup();
   }
 }

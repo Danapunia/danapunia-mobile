@@ -11,10 +11,16 @@ class DetailPageProposal extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Text('Proposal'),
+          Text(
+            'Proposal',
+            style: GoogleFonts.inter(),
+          ),
           TextButton(
             onPressed: () {},
-            child: const Text('Download'),
+            child: Text(
+              'Download',
+              style: GoogleFonts.inter(),
+            ),
           ),
         ],
       ),

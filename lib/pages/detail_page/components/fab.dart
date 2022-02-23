@@ -21,7 +21,7 @@ class DetailPageFAB extends StatelessWidget {
           borderRadius: BorderRadius.circular(0),
         ),
         padding: const EdgeInsets.symmetric(vertical: 16),
-        primary: Colors.green,
+        // primary: Colors.green,
       ),
     );
   }

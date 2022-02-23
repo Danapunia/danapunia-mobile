@@ -13,11 +13,17 @@ class HomePageAppBar extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text('DANAPUNIA',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                )),
+            Text(
+              'DANAPUNIA',
+              // style: TextStyle(
+              //   fontWeight: FontWeight.bold,
+              //   fontSize: 18,
+              // ),
+              style: GoogleFonts.inter(
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
             IconButton(
               onPressed: ctrl.searchOnClick,
               icon: const Icon(

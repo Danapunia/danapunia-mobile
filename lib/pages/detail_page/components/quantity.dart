@@ -15,8 +15,20 @@ class DetailPageQuantity extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  Text(_.punia!.collectedFund.toString()),
-                  const Text('Terkumpul'),
+                  Text(
+                    'Rp ${currency(_.punia!.collectedFund)}',
+                    style: GoogleFonts.inter(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  Text(
+                    'Terkumpul',
+                    style: GoogleFonts.inter(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
                 ],
               ),
               const VerticalDivider(
@@ -25,8 +37,20 @@ class DetailPageQuantity extends StatelessWidget {
               ),
               Column(
                 children: [
-                  Text(_.punia!.targetFund.toString()),
-                  const Text('Target Punia'),
+                  Text(
+                    'Rp ${currency(_.punia!.targetFund)}',
+                    style: GoogleFonts.inter(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  Text(
+                    'Target',
+                    style: GoogleFonts.inter(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
                 ],
               ),
               const VerticalDivider(
@@ -35,8 +59,20 @@ class DetailPageQuantity extends StatelessWidget {
               ),
               Column(
                 children: [
-                  Text('${_.punia!.deadline?.day} Hari Lagi'),
-                  const Text('Tenggat'),
+                  Text(
+                    '${_.punia!.deadline?.day}',
+                    style: GoogleFonts.inter(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  Text(
+                    'Sisa Hari',
+                    style: GoogleFonts.inter(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
                 ],
               ),
             ],

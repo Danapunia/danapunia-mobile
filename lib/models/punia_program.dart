@@ -40,6 +40,7 @@ class PuniaProgram {
   int? targetFund;
   DateTime? deadline;
   DateTime? createdAt;
+  Organization? organization;
 
   PuniaProgram({
     required this.id,
@@ -52,6 +53,7 @@ class PuniaProgram {
     required this.targetFund,
     required this.deadline,
     required this.createdAt,
+    this.organization,
   });
 
   factory PuniaProgram.fromJson(Map<String, dynamic> json) {
@@ -77,6 +79,9 @@ class PuniaProgram {
       ),
       organizationId: json['attributes']['organisase']['data'] != null
           ? json['attributes']['organisase']['data']['id']
+          : null,
+      organization: json['attributes']['organisase']['data'] != null
+          ? Organization.fromJson(json['attributes']['organisase']['data'])
           : null,
     );
   }

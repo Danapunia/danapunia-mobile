@@ -23,6 +23,10 @@ class HomePagePuniaFilter extends StatelessWidget {
                     onSelected: (x) => _.categoryOnSelected(index),
                     label: Text(
                       ctrl.puniaCategory.getDataByIndex(index).name,
+                      style: GoogleFonts.inter(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500
+                      ),
                     ),
                     selected: ctrl.puniaCategory.getDataByIndex(index).selected,
                   ),
